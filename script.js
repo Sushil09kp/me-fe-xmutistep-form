@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const steps = document.querySelectorAll(".form-step");
     const indicators = document.querySelectorAll(".step");
     const nextButtons = document.querySelectorAll(
-        '.form-step button[id="next-button"]'
+        '.form-step button:not(.back-button):not(#confirm-button)'
     );
     const backButtons = document.querySelectorAll(".back-button");
 
@@ -64,12 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const activeStep = document.getElementById(
                 `step-${stepNumber}`
             );
-
+        
             const nextButton = activeStep.querySelector("button:not(.back-button)");
-
+        
             if (nextButton) {
                 nextButton.id = "next-button";
             }
+        } else if (stepNumber === 4) {
+            confirmButton.id = "next-button";
         }
 
         if (stepNumber === 4) {
